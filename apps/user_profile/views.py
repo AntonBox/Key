@@ -32,6 +32,7 @@ def edit_profile(request):
         if form.is_valid():
             obj = form.save(commit=False)
             x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+            # getting ip
             if x_forwarded_for:
                 ip = x_forwarded_for.split(',')[-1].strip()
             else:
