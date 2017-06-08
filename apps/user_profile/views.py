@@ -17,6 +17,7 @@ def profile(request):
     return render(request, 'profile.html', {'form': form})
 
 
+@login_required
 def edit_profile(request):
     user = request.user
     profile = get_object_or_404(Profile, user=user)
@@ -31,6 +32,7 @@ def edit_profile(request):
         if form.is_valid():
             obj = form.save(commit=False)
             x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+            # getting ip
             if x_forwarded_for:
                 ip = x_forwarded_for.split(',')[-1].strip()
             else:
