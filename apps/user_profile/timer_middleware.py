@@ -1,5 +1,5 @@
-import time
 from apps.user_profile.models import Timer
+import time
 
 
 class RequestTimerMiddleware(object):
