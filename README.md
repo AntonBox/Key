@@ -14,8 +14,8 @@
 #### If you are using pew:
 
 ```
-    pew new -p python3.5 cezar
-    pew workon cezar
+    pew new -p python3.5 keyua
+    pew workon keyua
 ```
 
 
@@ -27,10 +27,6 @@
     sudo apt-get install python3-dev
 ```
 
-#### Pillow package dependencies:
-
-```
-    sudo apt-get install libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
 ```
 
 #### Django dependencies:
@@ -48,8 +44,8 @@
 
 ```
     sudo -i -u postgres
-    createuser cezar -P
-    createdb cezar -O cezar
+    createuser keyua -P
+    createdb keyua -O keyua
     exit
 ```
 
