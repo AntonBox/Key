@@ -57,7 +57,9 @@
 
 
 ### 4. Run project:
-
 ```
+    python manage.py createsuperuser
+
+
     make run
 ```
