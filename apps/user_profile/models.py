@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 
 from root.base_models import TimedModel
+from datetime import datetime
 
 
 class Profile(TimedModel):
@@ -21,11 +22,28 @@ class Timer(TimedModel):
     time = models.CharField(max_length=250, blank=True, null=True)
 
 
-'''You can see only post_save. there is no sense to post_delete becouse it
-would duplicate OneToOne field proprty that deletes profile as well'''
+class ChangeNote(TimedModel):
+    changed_object = models.CharField(max_length=250, blank=True, null=True)
+    act = models.CharField(max_length=250, blank=True, null=True)
+    time = models.CharField(max_length=250, blank=True, null=True)
 
 
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
+@receiver(post_save, sender=Profile)
+def save_change_model(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
+        act = 'creation'
+    else:
+        act = 'changing'
+    change_time = datetime.now()
+    ChangeNote.objects.create(changed_object=instance, act=act,
+                              time=change_time)
+
+
+@receiver(post_delete, sender=User)
+@receiver(post_delete, sender=Profile)
+def delete_model(sender, instance, **kwargs):
+    act = 'deleting'
+    change_time = datetime.now()
+    ChangeNote.objects.create(changed_object=instance, act=act,
+                              time=change_time)
