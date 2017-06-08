@@ -61,5 +61,5 @@
     python manage.py createsuperuser
 
 
-    make run
+    make run(dont forget to login in admin panel)
 ```
