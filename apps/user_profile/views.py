@@ -17,6 +17,7 @@ def profile(request):
     return render(request, 'profile.html', {'form': form})
 
 
+@login_required
 def edit_profile(request):
     user = request.user
     profile = get_object_or_404(Profile, user=user)
