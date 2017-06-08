@@ -57,7 +57,9 @@
 
 
 ### 4. Run project:
-
 ```
-    make run
+    python manage.py createsuperuser
+
+
+    make run(dont forget to login in admin panel)
 ```
