@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load profile_tags %}
+
+{% block content %}
+
+	<div id='content'>
+		<div class="container">
+			<div class="col-md-6">
+				{% load bootstrap %}
+				{{ form.first_name|bootstrap }}
+				{{ form.last_name|bootstrap }}
+				{{ form.biography|bootstrap }}
+				{{ form.contacts|bootstrap }}
+				{{form.date_of_birth|bootstrap}}
+				<a href="{% url 'edit_profile'%}"><button type="submit" class="btn btn-success">Edit</button></a>
+				<a href="{% view_user user=request.user%}"><button type="submit" class="btn btn-danger">Admin panel</button></a>
+			</div>
+		</div>
+	</div>
+s
+{% endblock %}
+
+
+{% block extra_script %}
+
+{% endblock %}

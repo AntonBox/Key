@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap %}
+
+{% block content %}
+
+	<div id='content'>
+		<div class="container">
+			<div class="col-md-6">
+				<form action="{% url 'edit_profile' %}" method="post">{% csrf_token %}
+				{{ form.first_name|bootstrap }}
+				{{ form.last_name|bootstrap }}
+				{{ form.biography|bootstrap }}
+				{{ form.contacts|bootstrap }}
+				{{form.date_of_birth|bootstrap}}
+				<script>
+				  $(function() {
+				    $( ".datepicker" ).datepicker();
+				  });
+				</script>
+					<button type="submit" class="btn btn-success">Edit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+					
+
+{% endblock %}
+
+
+{% block extra_script %}
+
+{% endblock %}

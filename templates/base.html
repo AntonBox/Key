@@ -1,0 +1,74 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+
+    <title>{% block title %}KeyUa{% endblock %}</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap and Font Awesome css -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+   
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}"/>
+
+    <!-- Css animations  -->
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-datepicker.min.css" %}"/>
+
+    <!-- THEME -->
+
+<!-- asdasdasdasdasdasdasdasdas -->
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+
+    <script type="text/javascript"src="{% static "js/bootstrap.js" %}"></script>
+    <script type="text/javascript"src="{% static "js/bootstrap-datepicker.min.js" %}"></script>
+    
+
+    {% block extra_style %}{% endblock %}
+</head>
+
+<body>
+
+    <div id="all">
+
+        {% if messages %}
+            <div class="alert alert-success">
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        
+        <!-- CONTENT -->
+        {% block content %}{% endblock %}
+        <!-- CONTENT -->
+
+
+        <!-- COPYRIGHT -->
+        {% include "copyright.html"%}
+        <!-- COPYRIGHT -->
+
+
+    </div>
+
+    <script type="text/javascript"src="{% static "js/csrf.js" %}"></script>
+
+    {% block extra_script %}{% endblock %}
+
+
+</body>
+
+</html>
